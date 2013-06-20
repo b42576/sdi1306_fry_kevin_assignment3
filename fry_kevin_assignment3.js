@@ -9,22 +9,22 @@ var jsonData = {
         {
             "name": "Twitter",
             "link": "https://twitter.com/",
-            "description": "Short \"text\" messages for the world to see."
+            "description": "you send short \"text\" messages for the world to see."
         },
         {
             "name": "Google+",
             "link": "https://plus.google.com/",
-            "description": "Updates and shares from your circles of friends, family, co-workers, and people you admire."
+            "description": "you get updates and shares from your circles of friends, family, co-workers, and people you admire."
         },
         {
             "name": "LinkedIn",
             "link": "https://www.linkedin.com/",
-            "description": "Professional networking."
+            "description": "your able to do professional networking."
         },
         {
             "name": "Facebook",
             "link": "https://www.facebook.com/",
-            "description": "Post messages, pictures, and videos for all your friends to see."
+            "description": "you can post messages, pictures, and videos for all your friends to see."
         }
     ]
 };
@@ -60,7 +60,29 @@ var objPost = {
     
 };
 
+var funcShowJsonData = function(myData){
+    var numSocialNetworks = 0;
+    var textMessageMax = 160;
+    var numCharacters = 150;
+    var tweetMessageMax = 140;
+    var txtTest = "Twitter";
+    for (var key in myData.socialNetworks){
+        numSocialNetworks = numSocialNetworks + 1;
+        console.log("With " + myData.socialNetworks[key].name + ", " + myData.socialNetworks[key].description);
+        if (myData.socialNetworks[key].name === txtTest){
+            while (numCharacters > tweetMessageMax){
+                console.log(numCharacters + " characters is too many for Twitter, let's reduce the size of the tweet.");
+                numCharacters = numCharacters - 1;
+            }
+            console.log(numCharacters + " characters can be posted to Twitter.");
+        }
+    }
+    return numSocialNetworks;
+};
 
+var numSocialNetworks = funcShowJsonData(jsonData);
+
+var objTwitter = { "name": "Twitter", "mediaType": "characters", "textMessage": false };
 
 var arrMediaTypes = ["all available", "text", "pictures", "videos"];
 var arrMaxTypes = ["characters","px","hr","min","KB","MB","GB"];
