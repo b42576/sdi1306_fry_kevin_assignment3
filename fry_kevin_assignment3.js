@@ -39,26 +39,36 @@ var objPost = {
         this.mediaType = mediaType;
         this.maxSize = maxSize;
         this.maxType = maxType;
+    },
+    "detectSocialNetwork":  function(size,type){
+        var arrSocials = [];
+        if ((type === "characters") && (size <= 140)) {
+            arrSocials.push("Twitter");
+        } else {
+            if ((type === "px") && (size <= 2048)){
+                arrSocials.push("Facebook","Google+","LinkedIn");
+            } else {
+                arrSocials.push("Facebook","Google+","LinkedIn");
+            }
+        }
+        return arrSocials;
+    },
+    "getSocial": function(){
+        var setInfo = [this.name,this.mediaType,this.maxSize,this.maxType];
+        return setInfo;
     }
     
 };
+
+
 
 var arrMediaTypes = ["all available", "text", "pictures", "videos"];
 var arrMaxTypes = ["characters","px","hr","min","KB","MB","GB"];
 var arrChangeSocialNetworking = ["network", "type", "size", "sizeType"];
 
-
-// boolean function
-var funcJustTextOrOtherwise = function(varSocial1, varSocial2){
-    if (varSocial1 === varSocial2) {
-        console.log(varSocial1 + " is the social networking tool we'll be using.");
-        return true;
-    } else {
-        console.log(varSocial1 + " is not the same as " + varSocial2);
-        return false;
-    }
+var objSocials = {
+    
 };
-
 
 
 
