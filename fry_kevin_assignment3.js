@@ -29,3 +29,48 @@ var jsonData = {
     ]
 };
 
+var objPost = {
+    "name":         "Twitter",
+    "mediaType":    "text",
+    "maxSize":      140,
+    "maxType":      "characters",
+    "changeSocalNetwork":   function(name,mediaType,maxSize,maxType){
+        this.name = name;
+        this.mediaType = mediaType;
+        this.maxSize = maxSize;
+        this.maxType = maxType;
+    }
+    
+};
+
+var arrMediaTypes = ["all available", "text", "pictures", "videos"];
+var arrMaxTypes = ["characters","px","hr","min","KB","MB","GB"];
+var arrChangeSocialNetworking = ["network", "type", "size", "sizeType"];
+
+
+// boolean function
+var funcJustTextOrOtherwise = function(varSocial1, varSocial2){
+    if (varSocial1 === varSocial2) {
+        console.log(varSocial1 + " is the social networking tool we'll be using.");
+        return true;
+    } else {
+        console.log(varSocial1 + " is not the same as " + varSocial2);
+        return false;
+    }
+};
+
+
+
+
+// facebook max file upload 25mb
+objPost.changeSocalNetwork("Facebook","videos",25,"MB");
+objPost.changeSocalNetwork("Google+","pictures",2048,"px");
+objPost.changeSocalNetwork("Google+","videos",15,"min");
+// Unlimited video uploads (up to 15 minutes per video, up to 1080p)
+
+
+console.log("Social Network: " + objPost.name);
+console.log("Medial Type: " + objPost.mediaType);
+console.log("Max Size: " + objPost.maxSize);
+console.log("Max Type: " + objPost.maxType);
+
