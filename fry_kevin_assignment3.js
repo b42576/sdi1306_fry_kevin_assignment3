@@ -3,7 +3,7 @@
 // Project 3
 // Custom JS app based on created flowchart
 
-
+// JSON data
 var jsonData = {
     "socialNetworks": [
         {
@@ -29,6 +29,11 @@ var jsonData = {
     ]
 };
 
+// Variables
+var objTwitter = { "name": "Twitter", "mediaType": "characters", "textMessage": false };
+var arrFacebook = ["Facebook", "all available", true, "will throw an error"];
+
+// Object
 var objPost = {
     "name":         "Twitter",
     "mediaType":    "text",
@@ -56,6 +61,13 @@ var objPost = {
     "getSocial": function(){
         var setInfo = [this.name,this.mediaType,this.maxSize,this.maxType];
         return setInfo;
+    },
+    "isTwitter": function(myBool){
+        if ((myBool === true) && (this.name === "Twitter")){
+            return true;
+        } else {
+            return false;
+        }
     }
     
 };
@@ -80,9 +92,22 @@ var funcShowJsonData = function(myData){
     return numSocialNetworks;
 };
 
+var funcMergeToObject = function(myArray, myObject){
+    var objReturn = { "name": myArray[0], "mediaType": myArray[1], "textMessage": myArray[2] };
+    for (i=0; i<myArray.length; i++){
+        //console.out(myArray[i] + " ");
+        while (myArray.length > 3){
+            console.log ("Sometimes, your posts to " + myArray[0] + " can be too much for Twitter to handle.");
+            myArray.pop();
+        }
+        
+    }
+    return objReturn;
+};
+
 var numSocialNetworks = funcShowJsonData(jsonData);
 
-var objTwitter = { "name": "Twitter", "mediaType": "characters", "textMessage": false };
+var myTwoSocials = funcMergeToObject(arrFacebook, objTwitter);
 
 var arrMediaTypes = ["all available", "text", "pictures", "videos"];
 var arrMaxTypes = ["characters","px","hr","min","KB","MB","GB"];
