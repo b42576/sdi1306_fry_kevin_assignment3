@@ -32,6 +32,9 @@ var jsonData = {
 // Variables
 var objTwitter = { "name": "Twitter", "mediaType": "characters", "textMessage": false };
 var arrFacebook = ["Facebook", "all available", true, "will throw an error"];
+var arrMediaTypes = ["all available", "text", "pictures", "videos"];
+var arrMaxTypes = ["characters","px","hr","min","KB","MB","GB"];
+var arrChangeSocialNetworking = ["network", "type", "size", "sizeType"];
 
 // Object
 var objPost = {
@@ -48,12 +51,12 @@ var objPost = {
     "detectSocialNetwork":  function(size,type){
         var arrSocials = [];
         if ((type === "characters") && (size <= 140)) {
-            arrSocials.push("Twitter");
+            arrSocials.push("Twitter","Facebook","Google+","LinkedIn");
         } else {
             if ((type === "px") && (size <= 2048)){
                 arrSocials.push("Facebook","Google+","LinkedIn");
             } else {
-                arrSocials.push("Facebook","Google+","LinkedIn");
+                arrSocials.push("Pinterest");
             }
         }
         return arrSocials;
@@ -106,19 +109,10 @@ var funcMergeToObject = function(myArray, myObject){
 };
 
 var numSocialNetworks = funcShowJsonData(jsonData);
-
-var myTwoSocials = funcMergeToObject(arrFacebook, objTwitter);
-
-var arrMediaTypes = ["all available", "text", "pictures", "videos"];
-var arrMaxTypes = ["characters","px","hr","min","KB","MB","GB"];
-var arrChangeSocialNetworking = ["network", "type", "size", "sizeType"];
-
-var objSocials = {
-    
-};
-
-
-
+var myFB2ObjSocial = funcMergeToObject(arrFacebook, objTwitter);
+var iCanPostTo = objPost.detectSocialNetwork(125, "characters");
+var arrCurrentSocial = objPost.getSocial();
+var boolIsCurrentSocialTwitter = objPost.isTwitter(false);
 // facebook max file upload 25mb
 objPost.changeSocalNetwork("Facebook","videos",25,"MB");
 objPost.changeSocalNetwork("Google+","pictures",2048,"px");
@@ -126,8 +120,6 @@ objPost.changeSocalNetwork("Google+","videos",15,"min");
 // Unlimited video uploads (up to 15 minutes per video, up to 1080p)
 
 
-console.log("Social Network: " + objPost.name);
-console.log("Medial Type: " + objPost.mediaType);
-console.log("Max Size: " + objPost.maxSize);
-console.log("Max Type: " + objPost.maxType);
+console.log("With the " + objPost.name + " social network, posting " + objPost.mediaType + " maxes out at " + objPost.maxSize + " " + objPost.maxType + ".");
 
+console.log("It's " +boolIsCurrentSocialTwitter+ " that we are right now working with Twitter.");
